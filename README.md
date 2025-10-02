@@ -35,7 +35,7 @@ The system uses [CrewAI](https://github.com/joaomdmoura/crewai) to coordinate re
 | Tool        | Purpose                                |
 |-------------|----------------------------------------|
 | 🧠 CrewAI    | Multi-agent orchestration              |
-| 💬 OpenAI    | Language model API (for reasoning)     |
+| 💬 Claude    | Language model API (for reasoning)     |
 | 🎛️ Streamlit | Interactive UI                         |
 | 📝 YAML      | Configuration of agents and tasks      |
 | 🔐 Python-dotenv | Secure local environment variables |
