@@ -1,54 +1,160 @@
-# Innervoiceai Crew
+InnerVoice AI – Decision Clarity Through AI Debate
 
-Welcome to the Innervoiceai Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+InnerVoice AI is an MVP that helps users overcome decision paralysis by simulating their internal reasoning process using role-based autonomous agents. Powered by CrewAI
+, it enables structured inner dialogue between four distinct agents:
 
-## Installation
+Optimist – champions the upside and best-case outcomes
 
-Ensure you have Python >=3.10 <3.13 installed on your system. This project uses [UV](https://docs.astral.sh/uv/) for dependency management and package handling, offering a seamless setup and execution experience.
+Pessimist – warns about risks and worst-case scenarios
 
-First, if you haven't already, install uv:
+Ethicist – considers values, ethics, and long-term integrity
 
-```bash
-pip install uv
-```
+Mediator – weighs all perspectives and provides a final, confident recommendation
 
-Next, navigate to your project directory and install the dependencies:
+This project is a Minimum Viable Product (MVP), built as part of the 48-Hour Build Challenge by Claude Builder Club @ UCSD.
 
-(Optional) Lock the dependencies and install them by using the CLI command:
-```bash
-crewai install
-```
-### Customizing
+✅ Multi-agent reasoning using CrewAI
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+✅ Real-time inner voice simulation
 
-- Modify `src/innervoiceai/config/agents.yaml` to define your agents
-- Modify `src/innervoiceai/config/tasks.yaml` to define your tasks
-- Modify `src/innervoiceai/crew.py` to add your own logic, tools and specific args
-- Modify `src/innervoiceai/main.py` to add custom inputs for your agents and tasks
+✅ Simple and clean Streamlit
+ UI
 
-## Running the Project
+✅ Fully configurable via YAML
 
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
+✅ Secure API key management using .env
 
-```bash
-$ crewai run
-```
+✅ Ready to deploy, customize, and scale
 
-This command initializes the InnervoiceAI Crew, assembling the agents and assigning them tasks as defined in your configuration.
+Installation
+1. Clone the repo
+git clone https://github.com/SarathL754/48-Hour-Build-Challenge-Claude-Builder-Club-UCSD.git
+cd 48-Hour-Build-Challenge-Claude-Builder-Club-UCSD
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+2. Install dependencies
 
-## Understanding Your Crew
+We recommend using uv
+ or pip.
 
-The InnervoiceAI Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+pip install -r requirements.txt
 
-## Support
+3. Add your .env file
 
-For support, questions, or feedback regarding the Innervoiceai Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
+Create a .env file in the project root:
 
-Let's create wonders together with the power and simplicity of crewAI.
+touch .env
+
+
+Paste your keys:
+
+OPENAI_API_KEY=your-openai-api-key
+AGENTOPS_API_KEY=your-optional-agentops-api-key
+AGENTOPS_DISABLED=true  # Recommended for local testing
+
+
+✅ .env is excluded from version control via .gitignore.
+
+Running the InnerVoice Crew (CLI or UI)
+Option 1: Streamlit Interface (Recommended)
+streamlit run src/innervoiceai/main.py
+
+
+This launches a web UI where users can:
+
+Input a decision they’re stuck on
+
+Provide their values
+
+See a complete debate and final recommendation
+
+Option 2: Run from CLI
+crewai run
+
+
+Make sure pyproject.toml is configured with:
+
+[tool.crewai]
+entry_point = "src.innervoiceai.crew.Innervoiceai"
+
+Configuration
+Agents
+
+Defined in: src/innervoiceai/config/agents.yaml
+
+Each agent has:
+
+role: What they do
+
+goal: Their purpose in the crew
+
+backstory: Why they think the way they do
+
+Tasks
+
+Defined in: src/innervoiceai/config/tasks.yaml
+
+Each task has:
+
+description: What the agent must do
+
+expected_output: What the agent must return
+
+output_variable_name: Used to pass output to later tasks
+
+📁 Project Structure
+innervoiceai/
+├── .env                   # ⚠️ Your secrets (ignored from git)
+├── .gitignore
+├── README.md              # ✅ This file
+├── requirements.txt       # Project dependencies
+├── pyproject.toml         # For crewAI CLI
+└── src/
+    └── innervoiceai/
+        ├── config/
+        │   ├── agents.yaml
+        │   └── tasks.yaml
+        ├── crew.py
+        ├── main.py         # 💡 Streamlit interface
+        └── tools/          # Optional: Custom tools for agents
+
+Deployment Options
+
+You can deploy this app to:
+
+Streamlit Cloud
+ (add API keys under "Secrets")
+
+Hugging Face Spaces
+
+Render
+
+Vercel (via FastAPI wrapper)
+
+Need help with deployment? Just ask!
+
+📖 Learn More
+
+🧠 CrewAI Docs
+
+💬 CrewAI Discord
+
+🔧 CrewAI GitHub
+
+🤖 LangChain Tools
+
+👩‍💻 Credits
+
+Built by SarathL754
+ and contributors during the Claude Builder Club @ UCSD Hackathon.
+
+Powered by:
+
+CrewAI
+
+OpenAI
+
+Streamlit
+
+📌 Disclaimer
+
+This is an experimental MVP, not intended for real-world ethical or psychological advice. Use responsibly.
