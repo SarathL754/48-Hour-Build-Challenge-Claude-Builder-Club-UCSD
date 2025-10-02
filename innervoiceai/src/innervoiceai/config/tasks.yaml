@@ -1,0 +1,58 @@
+evaluate_from_optimist:
+  description: >
+    Consider the user's dilemma: {user_decision}.
+    Highlight the potential upsides, best-case scenarios, and exciting opportunities.
+    Encourage boldness and confidence.
+  expected_output: >
+    A short paragraph (3-4 sentences) focusing only on the positives of taking action.
+  output_variable_name: optimist_view
+  agent: optimist
+
+evaluate_from_pessimist:
+  description: >
+    Consider the user's dilemma: {user_decision}.
+    Highlight the potential risks, failures, or worst-case outcomes.
+    Your job is to be realistic, cautious, and protective.
+  expected_output: >
+    A short paragraph (3-4 sentences) that outlines the major risks or regrets that could arise.
+  output_variable_name: pessimist_view
+  agent: pessimist
+
+evaluate_from_ethics:
+  description: >
+    Reflect on the user's dilemma: {user_decision}.
+    Evaluate the decision through the lens of ethics, values, and long-term integrity.
+    Consider alignment with the user's stated values: {user_values}.
+  expected_output: >
+    A paragraph (3-4 sentences) evaluating the alignment of this choice with the user's principles.
+  output_variable_name: ethics_view
+  agent: ethicist
+
+mediate_and_recommend:
+  description: >
+    You have received 3 different perspectives on the user's dilemma: {user_decision}.
+    
+    - The Optimist said
+    - The Pessimist said
+    - The Ethicist said
+    Your task is to compile and present all perspectives clearly, followed by your own synthesized recommendation as the internal mediator.
+    Make sure your summary helps the user understand the rationale behind each viewpoint and feel confident moving forward.
+    Reflect on the user's values: {user_values}.
+
+  expected_output: >
+    A final report structured as follows:
+
+    1. Optimist's View:
+       {A short summary of the optimistic case}
+
+    2. Pessimist's View:
+       {A short summary of the pessimistic case}
+
+    3. Ethical View:
+       {A short summary of the ethical implications}
+
+    4. Mediator's Recommendation:
+       {A synthesized recommendation based on all 3 perspectives. Encourage the user toward aligned and confident action.}
+
+  output_variable_name: final_recommendation
+  agent: mediator
